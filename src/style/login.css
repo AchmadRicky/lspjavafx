@@ -1,0 +1,35 @@
+.left-side-background{
+    -fx-background-color: #ffb703;
+    -fx-background-image:url("../img/logo_kiri.png");
+    -fx-background-size: 70%;
+    -fx-background-position:center;
+    -fx-background-repeat:no-repeat;
+}
+.border{
+    -fx-border-color: #000000;
+    -fx-border-width: 1.5;
+}
+.logo_username{
+    -fx-background-size: 75%;
+    -fx-background-position:center;
+    -fx-background-repeat:no-repeat;
+    -fx-border-color: #000000;
+    -fx-border-width: 0 1.5 0 0;
+}
+.logo_password{
+    -fx-background-image:url("../img/password.png");
+    -fx-background-size: 65%;
+    -fx-background-position:center;
+    -fx-background-repeat:no-repeat;
+    -fx-border-color: #000000;
+    -fx-border-width: 0 1.5 0 0;
+}
+.btnLogin{
+    -fx-background-color: #ffb703;
+}
+.btnLogin:hover{
+    -fx-background-color: #fb8500;
+}
+.btnLogin:pressed{
+    -fx-background-color: #ff5003;
+}
