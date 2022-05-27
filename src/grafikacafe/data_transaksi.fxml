@@ -34,7 +34,7 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="1.0" layoutY="370.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="246.0" text="Data Pendapatan">
+            <Button layoutX="1.0" layoutY="370.0" mnemonicParsing="false" onAction="#datapendapatan" prefHeight="57.0" prefWidth="246.0" text="Data Pendapatan">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>

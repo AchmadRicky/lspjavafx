@@ -19,7 +19,7 @@ public class Grafikacafe extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("kasir.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("data_transaksi.fxml"));
         
         Scene scene = new Scene(root);
         

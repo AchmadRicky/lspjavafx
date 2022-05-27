@@ -6,6 +6,7 @@
 package grafikacafe;
 
 import database.koneksidb;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,12 +23,17 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -193,6 +199,18 @@ public class Data_transaksiController implements Initializable {
             System.out.println(e.getMessage());
         }
     }
+    
+    @FXML
+    void datapendapatan(ActionEvent event) throws IOException {
+        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("data_pendapatan.fxml"));
+                    Parent root1 = fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root1));
+                    stage.setMaximized(true);
+                    stage.show();
+    }
+    
     private void refreshList2(List<data_transaksi> transaksian) {
         ObservableList<data_transaksi> dokterModels = FXCollections.observableArrayList(transaksian);
         FilteredList<data_transaksi> filteredData = new FilteredList<>(dokterModels,predicate -> true);
