@@ -5,6 +5,7 @@
  */
 package database;
 
+import grafikacafe.data_keranjang;
 import grafikacafe.data_log;
 import grafikacafe.data_menu;
 import grafikacafe.data_transaksi;
@@ -105,6 +106,29 @@ public class koneksidb {
                         rs.getInt("meja"),
                         rs.getString("nama_kasir"),
                         rs.getString("waktu")
+                ));
+            }
+
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public static ObservableList<data_keranjang> getDataKeranjang() throws SQLException {
+        Connection conn = KoneksiDB();
+        ObservableList<data_keranjang> list = FXCollections.observableArrayList();
+        try {
+            String query = "SELECT * FROM keranjang";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new data_keranjang(
+                        rs.getInt("id_keranjang"),
+                        rs.getInt("id_menu"),
+                        rs.getInt("harga"),
+                        rs.getInt("jumlah"),
+                        rs.getInt("total_pembelian"),
+                        rs.getString("nama_menu")
                 ));
             }
 

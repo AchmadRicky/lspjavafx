@@ -10,6 +10,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -23,6 +24,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -50,6 +52,11 @@ public class Data_transaksiController implements Initializable {
     private TableColumn<data_transaksi, String> tbwaktu;
     @FXML
     private ComboBox<String> cbnama_kasir;
+    @FXML
+    private DatePicker tanggalmulai;
+
+    @FXML
+    private DatePicker tanggalselesai;
     
     ObservableList<data_transaksi> list_transaksi;
 
@@ -137,6 +144,56 @@ public class Data_transaksiController implements Initializable {
         }
     }
     private void refreshList1(List<data_transaksi> transaksian) {
+        ObservableList<data_transaksi> dokterModels = FXCollections.observableArrayList(transaksian);
+        FilteredList<data_transaksi> filteredData = new FilteredList<>(dokterModels,predicate -> true);
+        cbnama_kasir.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+        filteredData.setPredicate(dokter ->{
+                    if (newValue == null|| newValue.isEmpty())
+                        return true;
+                    else{
+                        return false;
+                    }
+        });
+        });
+        
+
+        SortedList<data_transaksi> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(TabelTransaksi.comparatorProperty());//BINDING
+        TabelTransaksi.setItems(sortedData);
+    }
+    
+    @FXML
+    private void filter2(ActionEvent event) {
+        LocalDate tglmulai = tanggalmulai.getValue();
+        LocalDate tglselesai = tanggalselesai.getValue();
+        try{
+        List<data_transaksi> transaksian = new ArrayList<>();
+            String filter = "";
+            
+            if(tglmulai!=null){
+                filter = "WHERE waktu BETWEEN '"+tglmulai+"' AND '"+tglselesai+"'";
+            }else {
+                System.out.println("Value null!");
+            }
+            
+            java.sql.Connection conn = koneksidb.KoneksiDB();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM transaksi "+filter+"");
+            while (rs.next()) {
+                transaksian.add(new data_transaksi(
+                        rs.getInt("id_transaksi"),
+                        rs.getInt("id_kasir"),
+                        rs.getInt("total_pembelian"),
+                        rs.getInt("meja"),
+                        rs.getString("nama_kasir"),
+                        rs.getString("waktu")
+                ));
+            }
+            refreshList1(transaksian);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    private void refreshList2(List<data_transaksi> transaksian) {
         ObservableList<data_transaksi> dokterModels = FXCollections.observableArrayList(transaksian);
         FilteredList<data_transaksi> filteredData = new FilteredList<>(dokterModels,predicate -> true);
         cbnama_kasir.valueProperty().addListener((observableValue, oldValue, newValue) -> {

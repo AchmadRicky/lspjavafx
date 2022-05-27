@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -68,6 +69,15 @@
                </font>
             </Button>
             <ComboBox fx:id="cbnama_kasir" layoutX="755.0" layoutY="94.0" prefHeight="31.0" prefWidth="171.0" />
+            <DatePicker fx:id="tanggalmulai" layoutX="17.0" layoutY="106.0" />
+            <DatePicker fx:id="tanggalselesai" layoutX="216.0" layoutY="106.0" />
+            <Text layoutX="14.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal Mulai" />
+            <Text layoutX="227.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal Selesai" />
+            <Button layoutX="470.0" layoutY="104.0" mnemonicParsing="false" onAction="#filter2" prefHeight="21.0" prefWidth="60.0" text="Filter">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </center>
