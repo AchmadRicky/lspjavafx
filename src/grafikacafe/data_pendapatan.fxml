@@ -5,12 +5,13 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grafikacafe.Data_transaksiController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grafikacafe.Data_pendapatanController">
    <left>
       <AnchorPane prefHeight="768.0" prefWidth="243.0" style="-fx-background-color: yellow;" BorderPane.alignment="CENTER">
          <children>
@@ -34,7 +35,7 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="1.0" layoutY="370.0" mnemonicParsing="false" onAction="#datapendapatan" prefHeight="57.0" prefWidth="246.0" text="Data Pendapatan">
+            <Button layoutX="1.0" layoutY="370.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="246.0" text="Data Pendapatan">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -51,24 +52,17 @@
                 <TableColumn fx:id="tbid_kasir" prefWidth="75.0" text="Id Kasir" />
                   <TableColumn fx:id="tbnama_kasir" prefWidth="75.0" text="Nama Kasir" />
                   <TableColumn fx:id="tbtotal_pembelian" prefWidth="75.0" text="Total Pembelian" />
-                  <TableColumn fx:id="tbmeja" prefWidth="75.0" text="Meja" />
                   <TableColumn fx:id="tbwaktu" prefWidth="75.0" text="Waktu" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Text layoutX="464.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Transaksi">
+            <Text layoutX="464.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Pendapatan">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button layoutX="980.0" layoutY="96.0" mnemonicParsing="false" onAction="#filter" prefHeight="32.0" prefWidth="64.0" text="Filter">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <ComboBox fx:id="cbnama_kasir" layoutX="755.0" layoutY="94.0" prefHeight="31.0" prefWidth="171.0" />
             <DatePicker fx:id="tanggalmulai" layoutX="17.0" layoutY="106.0" />
             <DatePicker fx:id="tanggalselesai" layoutX="216.0" layoutY="106.0" />
             <Text layoutX="14.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal Mulai" />
@@ -78,6 +72,9 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <ComboBox fx:id="nama_kasir" disable="true" layoutX="89.0" layoutY="27.0" prefWidth="150.0" visible="false" />
+            <Text layoutX="801.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Pendapatan : " />
+            <TextField fx:id="tftotal_pendapatan" disable="true" editable="false" layoutX="914.0" layoutY="106.0" />
          </children>
       </AnchorPane>
    </center>
